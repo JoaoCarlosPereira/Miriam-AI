@@ -1,4 +1,4 @@
-/* Miriam-AI: Responsive Arcadic Theme */
+/* Miriam-AI: Responsive Arcadic Theme - RE-APPLIED */
 
 :root {
   --font-family-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
@@ -8,83 +8,62 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap');
 
-/* 1. Dynamic Background - Uses 100% viewport to never break layout */
+/* 1. Dynamic Background - Canvas Fix */
 #pacman-background {
   position: fixed !important;
   top: 0; left: 0;
   width: 100% !important;
   height: 100% !important;
-  z-index: -9999;
-  background-color: #050814;
+  z-index: -9999 !important;
+  background-color: #050814 !important;
+  display: block !important;
   pointer-events: none;
 }
 
-/* 2. Responsivity Protection: Make original UI elements transparent but keep their layout logic */
+/* 2. Transparency Overrides - Reveal the Pacman Background */
 html, body, #app, #main, .main-container, .chat-container, 
-.bg-white, .bg-gray-50, .dark .bg-gray-900, .dark .bg-gray-950, .dark .bg-black {
+.bg-white, .bg-gray-50, .dark .bg-gray-900, .dark .bg-gray-950, .dark .bg-black,
+main {
   background-color: transparent !important;
   background-image: none !important;
 }
 
-/* 3. Global Readability Overlay - Adapts to all screen sizes */
+/* 3. Global Readability Overlay */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: rgba(5, 8, 20, 0.75);
-  z-index: -500;
+  background-color: rgba(5, 8, 20, 0.75) !important;
+  z-index: -500 !important;
   pointer-events: none;
 }
 
-/* 4. Sidebar & UI Elements - Responsive Adjustments */
+/* 4. Sidebar & UI Elements */
 #sidebar {
   background-color: rgba(7, 15, 28, 0.92) !important;
   backdrop-filter: blur(15px);
   border-right: 1px solid rgba(124, 231, 255, 0.1);
 }
 
-/* Fix mobile sidebar behavior (Open-WebUI uses specific classes for mobile) */
-.mobile-sidebar-open #sidebar {
-  width: 85vw !important; /* Ensure it fits mobile screens */
-}
-
-/* 5. Chat Bubbles - High Contrast & Responsive */
+/* 5. Chat Bubbles */
 .chat-message-user {
   background: linear-gradient(135deg, rgba(30, 48, 243, 0.4) 0%, rgba(226, 30, 128, 0.4) 100%) !important;
   border: 1px solid rgba(124, 231, 255, 0.2);
   border-radius: 1.25rem !important;
-  max-width: 90%; /* Prevent bubbles from overflowing on small screens */
 }
 
-/* 6. Branding Refinement (No fixed dimensions that break layout) */
-[id*="logo"], [class*="logo"], .navbar-brand img {
-  max-height: 2.5rem;
-  width: auto;
-  filter: hue-rotate(280deg) brightness(1.1);
-}
-
-/* Splash Screen - Full Responsivity */
+/* Splash Screen Centering */
 #splash-screen {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   background: #050814;
 }
 
 #splash-canvas {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* Mobile-Specific Refinements */
-@media (max-width: 768px) {
-  body::before {
-    background-color: rgba(5, 8, 20, 0.85); /* Darker on mobile for better text focus */
-  }
-  .chat-message-user {
-    max-width: 95%;
-  }
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Global Typography */
@@ -93,3 +72,8 @@ body { font-family: var(--font-family-sans) !important; }
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-thumb { background: #e21e80; border-radius: 10px; }
+
+/* REBRANDING FORCE */
+[id*="logo"], [class*="logo"], .navbar-brand img {
+  filter: hue-rotate(280deg) brightness(1.1) !important;
+}
