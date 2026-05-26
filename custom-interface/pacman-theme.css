@@ -54,7 +54,7 @@ body::before {
 
 /* FULL BRANDING OVERHAUL: Miriam AI */
 
-/* Hide any remaining Open WebUI branding elements by force */
+/* Hide any remaining Miriam AI branding elements by force */
 [id*="logo"], [class*="logo"], .navbar-brand img, .login-page img {
   filter: hue-rotate(280deg) brightness(1.2) !important; /* Shift to pink/purple arcade vibe */
 }
@@ -81,14 +81,3 @@ body::before {
   background: transparent !important;
 }
 
-#auth-container::before {
-  content: "BEM-VINDO À MIRIAM AI";
-  display: block;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 900;
-  font-size: 2rem;
-  color: #ffd166; /* Pacman Yellow */
-  text-align: center;
-  margin-bottom: 2rem;
-  text-shadow: 0 0 10px #e21e80, 0 0 20px #1e30f3;
-}
