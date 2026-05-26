@@ -178,6 +178,7 @@
 
 	<body class="pacman-tech-theme" data-sveltekit-preload-data="hover">
                 <canvas id="pacman-background" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-100;"></canvas>
+                <div id="splash-screen" style="position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background: #0b1020; transition: opacity 0.5s ease-out; display: flex; justify-content: center; align-items: center;"><canvas id="splash-canvas"></canvas></div>
 		<div style="display: contents">
 			<script>
 				{
@@ -199,20 +200,6 @@
 
 		
 
-					<div
-						id="progress-bar"
-						style="
-							position: absolute;
-							width: 0%;
-							height: 0.75rem;
-							border-radius: 9999px;
-							background-color: #fff;
-						"
-						class="bg-white"
-					></div>
-				</div>
-			</div>
-
 			<!-- <span style="position: absolute; bottom: 32px; left: 50%; margin: -36px 0 0 -36px">
 				Footer content
 			</span> -->
@@ -228,7 +215,7 @@
                                 splash.style.opacity = "0";
                                 setTimeout(() => splash.remove(), 500);
                             }
-                        }, 2500);
+                        }, 2000);
                     });
                 </script>
 </body>
