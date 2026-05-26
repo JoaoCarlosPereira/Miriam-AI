@@ -1,83 +1,95 @@
-/* Pacman Tech Theme for Miriam-AI - Ultimate Visibility Fix */
+/* Miriam-AI: Responsive Arcadic Theme */
 
-/* 1. Ensure the background canvas is fixed and behind everything */
+:root {
+  --font-family-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --bs-primary: #1e30f3;
+  --bs-secondary: #e21e80;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap');
+
+/* 1. Dynamic Background - Uses 100% viewport to never break layout */
 #pacman-background {
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: -9999 !important;
-  background-color: #050814 !important;
-  display: block !important;
+  top: 0; left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -9999;
+  background-color: #050814;
+  pointer-events: none;
 }
 
-/* 2. Remove all solid backgrounds that hide the canvas */
+/* 2. Responsivity Protection: Make original UI elements transparent but keep their layout logic */
 html, body, #app, #main, .main-container, .chat-container, 
-.bg-white, .bg-gray-50, .bg-gray-900, .bg-gray-950,
-.dark .bg-gray-900, .dark .bg-gray-950, .dark .bg-black {
+.bg-white, .bg-gray-50, .dark .bg-gray-900, .dark .bg-gray-950, .dark .bg-black {
   background-color: transparent !important;
-  background: transparent !important;
+  background-image: none !important;
 }
 
-/* 3. Add a semi-transparent dark overlay to the entire screen for readability */
+/* 3. Global Readability Overlay - Adapts to all screen sizes */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(5, 8, 20, 0.7); /* Adjust this (0.7) for more or less opacity */
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(5, 8, 20, 0.75);
   z-index: -500;
   pointer-events: none;
 }
 
-/* 4. Ensure sidebar and UI elements are distinct */
+/* 4. Sidebar & UI Elements - Responsive Adjustments */
 #sidebar {
-  background-color: rgba(7, 15, 28, 0.9) !important;
-  backdrop-filter: blur(10px);
+  background-color: rgba(7, 15, 28, 0.92) !important;
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(124, 231, 255, 0.1);
 }
 
+/* Fix mobile sidebar behavior (Open-WebUI uses specific classes for mobile) */
+.mobile-sidebar-open #sidebar {
+  width: 85vw !important; /* Ensure it fits mobile screens */
+}
+
+/* 5. Chat Bubbles - High Contrast & Responsive */
 .chat-message-user {
   background: linear-gradient(135deg, rgba(30, 48, 243, 0.4) 0%, rgba(226, 30, 128, 0.4) 100%) !important;
+  border: 1px solid rgba(124, 231, 255, 0.2);
+  border-radius: 1.25rem !important;
+  max-width: 90%; /* Prevent bubbles from overflowing on small screens */
 }
 
-/* Typography and Scrollbar */
-:root {
-  --font-family-sans: "Plus Jakarta Sans", sans-serif;
-}
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { background: #e21e80; border-radius: 10px; }
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-/* FULL BRANDING OVERHAUL: Miriam AI */
-
-/* Hide any remaining Miriam AI branding elements by force */
-[id*="logo"], [class*="logo"], .navbar-brand img, .login-page img {
-  filter: hue-rotate(280deg) brightness(1.2) !important; /* Shift to pink/purple arcade vibe */
+/* 6. Branding Refinement (No fixed dimensions that break layout) */
+[id*="logo"], [class*="logo"], .navbar-brand img {
+  max-height: 2.5rem;
+  width: auto;
+  filter: hue-rotate(280deg) brightness(1.1);
 }
 
-/* Custom Splash Screen Styling */
+/* Splash Screen - Full Responsivity */
 #splash-screen {
-  background-color: #0b1020 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #050814;
 }
 
-#splash-screen img {
-  content: url('https://raw.githubusercontent.com/JoaoCarlosPereira/Miriam-AI/master/custom-interface/arcade-logo-placeholder.png'); /* We can use a stylized placeholder or keep original with filter */
-  height: 12rem !important;
-  animation: pulse-arcade 2s infinite ease-in-out;
+#splash-canvas {
+  max-width: 100%;
+  max-height: 100%;
 }
 
-@keyframes pulse-arcade {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 30px #e21e80; }
-  100% { transform: scale(1); opacity: 0.8; }
+/* Mobile-Specific Refinements */
+@media (max-width: 768px) {
+  body::before {
+    background-color: rgba(5, 8, 20, 0.85); /* Darker on mobile for better text focus */
+  }
+  .chat-message-user {
+    max-width: 95%;
+  }
 }
 
-/* Login Page Customization */
-.login-page, #auth-container {
-  background: transparent !important;
-}
+/* Global Typography */
+body { font-family: var(--font-family-sans) !important; }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: #e21e80; border-radius: 10px; }
