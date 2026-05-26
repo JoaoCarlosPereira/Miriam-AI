@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         const posY = 120 - scrollY;
         if (posY > -30) {
-            ctx.fillText('SCORE: ' + bgScore, width - 40, posY);
+            ctx.fillText('PONTUAÇÃO: ' + bgScore, width - 40, posY);
         }
         ctx.restore();
     }
